@@ -1,0 +1,7 @@
+<ng-container *ngIf="timer$ | async as timer">
+  <ng-container *ngFor="let _ of times; index as idx">
+    <div
+      [style.visibility]="idx % 2 === timer % 2 ? 'visible' : 'hidden'"
+    ></div>
+  </ng-container>
+</ng-container>
