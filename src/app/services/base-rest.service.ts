@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { delay, map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -20,6 +20,9 @@ export class BaseRESTService {
   ): Observable<T[]> {
     return this.http
       .get<T[]>(`${this.apiURL}/${path}`)
-      .pipe(map((list) => list.slice(page * limit, page * limit + limit)));
+      .pipe(
+        map((list) => list.slice(page * limit, page * limit + limit)),
+        delay(800)
+      );
   }
 }
