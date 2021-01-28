@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th>ID</th>
+    <th>User ID</th>
+    <th>Title</th>
+    <th>Body</th>
+  </tr>
+  <tr *ngFor="let post of posts">
+    <td>{{ post.id }}</td>
+    <td>{{ post.userId }}</td>
+    <td>{{ post.title | slice: 0:20 }}</td>
+    <td>{{ post.body | slice: 0:40 }}</td>
+  </tr>
+</table>
+<button [disabled]="page === 0" (click)="prevPage()">Prev</button>
+<button [disabled]="page === 9" (click)="nextPage()">Next</button>
